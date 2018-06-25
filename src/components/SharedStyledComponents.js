@@ -15,4 +15,8 @@ export const BodyWrapper = styled.div`
   height: 100%;
 `;
 
-export const FooterWrapper = styled.div``;
+export const FooterWrapper = styled.div`
+  display: grid;
+  padding: 10px 25px;
+  justify-self: center;
+`;

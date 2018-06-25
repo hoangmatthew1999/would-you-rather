@@ -34,10 +34,10 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <Redirect {...props} to="/dashboard" />}
+            render={props => <Redirect {...props} to="/home" />}
           />
           <Route path="/login" component={LoginView} />
-          <PrivateRoute path="/dashboard" component={Home} />
+          <PrivateRoute path="/home" component={Home} />
           <PrivateRoute path="/add" component={AddQuestionView} />
           <PrivateRoute path="/questions/:qid" component={QuestionView} />
         </Switch>

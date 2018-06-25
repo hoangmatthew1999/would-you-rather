@@ -6,12 +6,9 @@ import { CardStripAvatar } from "../Card";
 import { calculate } from "../../utils/tools";
 import { connect } from "react-redux";
 import Loading from "../Loading";
+import Footer from "../Footer";
 
-import {
-  MainWrapper,
-  BodyWrapper,
-  FooterWrapper
-} from "../SharedStyledComponents";
+import { MainWrapper, BodyWrapper } from "../SharedStyledComponents";
 
 import {
   fetchAndHandleQuestions,
@@ -33,6 +30,7 @@ const QuestionPercent = styled.div`
   grid-column: 3 / -1;
   display: grid;
   justify-self: end;
+  align-self: center;
   padding: 10px;
 `;
 
@@ -80,6 +78,10 @@ const QuestionText = styled.h2`
   justify-self: center;
   align-self: center;
   display: grid;
+`;
+
+const Answers = styled.p`
+  justify-self: center;
 `;
 
 class QuestionView extends Component {
@@ -158,9 +160,14 @@ class QuestionView extends Component {
                         width={25}
                         height={25}
                       />
-                    ) : null}
+                    ) : (
+                      <div />
+                    )}
                   </MyAvatar>
-                  <QuestionPercent>{left}%</QuestionPercent>
+                  <Answers>{left.n} vote(s)</Answers>
+                  <QuestionPercent>
+                    {isNaN(left.percent) ? 0 : left.percent}%
+                  </QuestionPercent>
                 </QuestionFooterWrapper>
               </QuestionWrapper>
               <QuestionWrapper
@@ -180,7 +187,10 @@ class QuestionView extends Component {
                       />
                     ) : null}
                   </MyAvatar>
-                  <QuestionPercent>{right}%</QuestionPercent>
+                  <Answers>{right.n} vote(s)</Answers>
+                  <QuestionPercent>
+                    {isNaN(right.percent) ? 0 : right.percent}%
+                  </QuestionPercent>
                 </QuestionFooterWrapper>
               </QuestionWrapper>
             </QuestionsWrapper>

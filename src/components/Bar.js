@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled, { css } from "styled-components";
 
 /*
@@ -18,9 +18,14 @@ const BarWrapper = styled.div`
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-borderborder-radius: 10px;
-  ${({ left, right }) => css`
-    grid-template-columns: ${left}% ${right}%;
-  `};
+  ${({ left, right }) =>
+    left === 0 && right === 0
+      ? css`
+          grid-template-columns: 1fr;
+        `
+      : css`
+          grid-template-columns: ${left}% ${right}%;
+        `};
 `;
 
 const Left = styled.div`
@@ -59,11 +64,24 @@ const Right = styled.div`
         `} background: #25ccf7;
 `;
 
+const Start = styled.div`
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-border-radius: 10px;
+  background: #7f8c8d;
+`;
+
 export default function Bar({ left, right }) {
   return (
     <BarWrapper left={left} right={right}>
-      <Left right={right} />
-      <Right left={left} />
+      {!isNaN(left) || !isNaN(right) ? (
+        <Fragment>
+          <Left right={right} />
+          <Right left={left} />
+        </Fragment>
+      ) : (
+        <Start />
+      )}
     </BarWrapper>
   );
 } // Bar

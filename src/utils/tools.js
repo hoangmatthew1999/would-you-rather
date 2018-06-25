@@ -1,3 +1,7 @@
+export function applyDescSort(array) {
+  return array.sort((a, b) => b.timestamp - a.timestamp);
+}
+
 export function calculate(optionOne, optionTwo) {
   const { votes: votesOne } = optionOne;
   const { votes: votesTwo } = optionTwo;
@@ -9,8 +13,14 @@ export function calculate(optionOne, optionTwo) {
   const left = 100 * votesOneLength / total;
   const right = 100 * votesTwoLength / total;
   return {
-    left: Math.round(left * 100) / 100,
-    right: Math.round(right * 100) / 100
+    left: {
+      n: votesOneLength,
+      percent: Math.round(left * 100) / 100
+    },
+    right: {
+      n: votesTwoLength,
+      percent: Math.round(right * 100) / 100
+    }
   };
 } // calculate
 

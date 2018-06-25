@@ -125,7 +125,7 @@ class Card extends Component {
                 <span style={{ color: "#FD7272" }}>{optionOne.text}</span> or{" "}
                 <span style={{ color: "#25CCF7" }}>{optionTwo.text}</span>?
               </QuestionWrapper>
-              <Bar left={left} right={right} />
+              <Bar left={left.percent} right={right.percent} />
             </CardStripBodyWrapper>
           </CardStripContentWrapper>
         </CardWrapper>

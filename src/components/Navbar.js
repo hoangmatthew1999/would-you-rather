@@ -30,10 +30,10 @@ function Navbar({ users, dispatch }) {
     <NavbarWrapper>
       <NavItemsWrapper>
         <Link style={{ textDecoration: "none", color: "black" }} to="/">
-          Dashboard
+          Home
         </Link>
         <Link to="/add" style={{ textDecoration: "none", color: "black" }}>
-          Add a Poll
+          Add Poll
         </Link>
         <div
           style={{ cursor: "pointer" }}

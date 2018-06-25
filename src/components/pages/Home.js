@@ -5,14 +5,12 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Header from "../Header";
 import styled from "styled-components";
-import {
-  MainWrapper,
-  BodyWrapper,
-  FooterWrapper
-} from "../SharedStyledComponents";
+import { MainWrapper, BodyWrapper } from "../SharedStyledComponents";
 
 import { fetchAndHandleQuestions } from "../../actions/questions";
 import Loading from "../Loading";
+import Footer from "../Footer";
+import { applyDescSort } from "../../utils/tools";
 
 const TabContentWrapper = styled.div`
   display: grid;
@@ -51,14 +49,24 @@ class Home extends Component {
         <BodyWrapper>
           <Tabs>
             <TabList>
-              <Tab>Answered</Tab>
               <Tab>Unanswered</Tab>
+              <Tab>Answered</Tab>
             </TabList>
+            <TabPanel>
+              <TabContentWrapper>
+                <h2>Unanswered</h2>
+                <TabBodyWrapper>
+                  {applyDescSort(unanswered).map(question => (
+                    <Card key={question.qid} question={question} />
+                  ))}
+                </TabBodyWrapper>
+              </TabContentWrapper>
+            </TabPanel>
             <TabPanel>
               <TabContentWrapper>
                 <h2>Answered</h2>
                 <TabBodyWrapper>
-                  {answered.map(({ answer, ...question }) => (
+                  {applyDescSort(answered).map(({ answer, ...question }) => (
                     <Card
                       answered
                       key={question.qid}
@@ -69,19 +77,9 @@ class Home extends Component {
                 </TabBodyWrapper>
               </TabContentWrapper>
             </TabPanel>
-            <TabPanel>
-              <TabContentWrapper>
-                <h2>Unanswered</h2>
-                <TabBodyWrapper>
-                  {unanswered.map(question => (
-                    <Card key={question.qid} question={question} />
-                  ))}
-                </TabBodyWrapper>
-              </TabContentWrapper>
-            </TabPanel>
           </Tabs>
         </BodyWrapper>
-        <FooterWrapper>Hi</FooterWrapper>
+        <Footer />
       </MainWrapper>
     );
   }
