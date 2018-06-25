@@ -111,12 +111,10 @@ class LoginView extends Component {
       <LoginWrapper>
         <LoginFormWrapper>
           <h1 style={{ textAlign: "center" }}>
-            <Shrug
-              style={{ fontSize: "50px" }}
-              role="img"
-              aria-label="shrug emoji"
-            >
-              🤷🏻‍♂️
+            <Shrug style={{ fontSize: "50px" }}>
+              <span role="img" aria-label="shrug emoji">
+                🤷🏻‍♂️
+              </span>
             </Shrug>
             <br />
             Would you rather...

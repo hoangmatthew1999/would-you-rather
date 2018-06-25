@@ -35,6 +35,12 @@ function Navbar({ users, dispatch }) {
         <Link to="/add" style={{ textDecoration: "none", color: "black" }}>
           Add Poll
         </Link>
+        <Link
+          to="/leaderboard"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          Rankings
+        </Link>
         <div
           style={{ cursor: "pointer" }}
           onClick={() => dispatch(handleUnAuthUser())}

@@ -26,7 +26,7 @@ const shake = keyframes`
   }
 `;
 
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
   background: white;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -34,8 +34,14 @@ const CardWrapper = styled.div`
   border-style: solid;
   border-width: thin;
   border-color: #ced6e0;
-  padding: 20px 25px;
-  -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  ${props =>
+    props.padding
+      ? css`
+          padding: ${props.padding};
+        `
+      : css`
+          padding: 20px 25px;
+        `} -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   transition: all 100ms;

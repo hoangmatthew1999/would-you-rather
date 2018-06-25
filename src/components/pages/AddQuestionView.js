@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../Header";
-import { MainWrapper, FooterWrapper } from "../SharedStyledComponents";
+import { MainWrapper } from "../SharedStyledComponents";
 import styled, { css } from "styled-components";
 import { questionsRef } from "../../utils/firebase";
 import { connect } from "react-redux";
@@ -12,6 +12,7 @@ const BodyWrapper = styled.div`
 `;
 
 const OrWrapper = styled.form`
+  align-self: center;
   display: grid;
   grid-template-rows: 100px min-content 100px;
 `;

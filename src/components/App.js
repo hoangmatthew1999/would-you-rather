@@ -3,14 +3,14 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
-  withRouter
+  Redirect
 } from "react-router-dom";
 import Home from "./pages/Home";
 import QuestionView from "./pages/QuestionView";
 import LoginView from "./pages/LoginView";
 import PrivateRoute from "./PrivateRoute";
 import AddQuestionView from "./pages/AddQuestionView";
+import LeaderView from "./pages/LeaderView";
 
 import { auth } from "../utils/firebase";
 import { handleAuthedUser, authUserError } from "../actions/users";
@@ -39,7 +39,9 @@ class App extends Component {
           <Route path="/login" component={LoginView} />
           <PrivateRoute path="/home" component={Home} />
           <PrivateRoute path="/add" component={AddQuestionView} />
+          <PrivateRoute path="/leaderboard" component={LeaderView} />
           <PrivateRoute path="/questions/:qid" component={QuestionView} />
+          <Route render={props => <Redirect {...props} to="/home" />} />
         </Switch>
       </Router>
     );

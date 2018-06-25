@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { getQuestions, getUser } from "../../utils/fakeAPI";
 import Header from "../Header";
 import styled, { css } from "styled-components";
 import { CardStripAvatar } from "../Card";
 import { calculate } from "../../utils/tools";
 import { connect } from "react-redux";
 import Loading from "../Loading";
-import Footer from "../Footer";
 
 import { MainWrapper, BodyWrapper } from "../SharedStyledComponents";
 
