@@ -42,7 +42,7 @@ class App extends Component {
           <PrivateRoute path="/add" component={AddQuestionView} />
           <PrivateRoute path="/leaderboard" component={LeaderView} />
           <PrivateRoute path="/questions/:qid" component={QuestionView} />
-          <Route path="/error" component={Error} />
+          <Route render={Error} />
         </Switch>
       </Router>
     );

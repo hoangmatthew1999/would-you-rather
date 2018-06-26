@@ -5,7 +5,7 @@ import { CardStripAvatar } from "../Card";
 import { calculate } from "../../utils/tools";
 import { connect } from "react-redux";
 import Loading from "../Loading";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 import { MainWrapper, BodyWrapper } from "../SharedStyledComponents";
 
@@ -128,7 +128,7 @@ class QuestionView extends Component {
     if (isFetching) {
       return <Loading />;
     } else if (error !== null) {
-      return <Redirect to="/error" />;
+      return <Redirect to="/404" />;
     } else {
       const { meta, ...question } = this.state.question;
       const { avatarURL: OPAvatarURL, username } = meta;
