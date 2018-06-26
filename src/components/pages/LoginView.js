@@ -94,7 +94,6 @@ class LoginView extends Component {
   render() {
     const { isAuthed, error, isFetching } = this.props.users;
     const { from } = this.props.location.state || { from: "/home" };
-
     if (isAuthed) {
       return (
         <Redirect

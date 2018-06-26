@@ -5,6 +5,7 @@ import { CardStripAvatar } from "../Card";
 import { calculate } from "../../utils/tools";
 import { connect } from "react-redux";
 import Loading from "../Loading";
+import { Redirect } from 'react-router-dom';
 
 import { MainWrapper, BodyWrapper } from "../SharedStyledComponents";
 
@@ -85,7 +86,8 @@ const Answers = styled.p`
 class QuestionView extends Component {
   state = {
     isFetching: true,
-    question: {}
+    question: {},
+    error: null
   };
 
   componentDidMount() {
@@ -98,7 +100,9 @@ class QuestionView extends Component {
     const question = this.props.questions.find(q => q.qid === qid);
     if (prevProps.isFetching !== this.props.isFetching) {
       if (typeof question !== "undefined") {
-        this.setState({ question, isFetching: false });
+        this.setState({ question, isFetching: false, error: null });
+      } else {
+        this.setState({ isFetching: false, error: "Question Not Found." });
       }
     }
   }
@@ -120,8 +124,11 @@ class QuestionView extends Component {
   };
 
   render() {
-    if (this.state.isFetching) {
+    const { isFetching, error } = this.state;
+    if (isFetching) {
       return <Loading />;
+    } else if (error !== null) {
+      return <Redirect to="/error" />;
     } else {
       const { meta, ...question } = this.state.question;
       const { avatarURL: OPAvatarURL, username } = meta;
